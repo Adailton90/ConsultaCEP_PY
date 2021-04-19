@@ -1,11 +1,7 @@
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/', methods=['GET'])
-def home():
-    return 'API de consulta CEP!!'
+import requests
+import json
 
 
-
-app.run()
-
+def consultaCEP(cep):
+    response = requests.get(f'https://viacep.com.br/ws/{cep}/xml/')
+    return response.text
